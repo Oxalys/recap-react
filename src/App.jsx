@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Nav from './Components/Nav';
 import Exo1 from './Components/Exo1';
 import Exo2 from './Components/Exo2';
@@ -13,7 +12,7 @@ const App = () => {
   return (
     <div>
       <Nav />
-      <Exo1 />
+      <Exo1 btn="Clique!" />
       <Exo2 />
       <Exo3 />
       <Exo4 />

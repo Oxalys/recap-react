@@ -4,7 +4,7 @@ import React from 'react';
 const Exo3 = () => {
 
     return(
-        <div>
+        <div className="container bg-light my-3">
 
         </div>
     )
