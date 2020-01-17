@@ -8,7 +8,7 @@ import Oeuf from './Components/Oeuf';
 import Calculatrice from './Components/Calculatrice';
 import ToDoList from './Components/ToDoList';
 
-const App = () => {
+const App = (props) => {
   return (
     <div>
       <Nav />
@@ -17,7 +17,7 @@ const App = () => {
       <Exo3 />
       <Exo4 />
       <Oeuf />
-      <Calculatrice />
+      <Calculatrice resultat={props.resultat}/>
       <ToDoList />
     </div>
   );
