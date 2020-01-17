@@ -17,10 +17,11 @@ const Exo3 = () => {
             lorsque vous cliquez sur le bouton "go" le nom de vous avez ajouté dans l'input sera 
             alors mis dans le span du h2 et l'input srea alors vidé de tout contenu. Attention, 
             interdiction de toucher à l'html</p>
-            <input type="text" name="" id=""/><button onClick={click}>GO</button>
+            <input type="text" name="" id=""/><button className="rounded btn-success" onClick={click}>GO</button>
 
         </div>
     )
 };
 
 export default Exo3;
+
