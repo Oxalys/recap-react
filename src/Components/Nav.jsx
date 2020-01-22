@@ -4,10 +4,12 @@ import Exo2 from './Exo2.jsx';
 import Exo3 from './Exo3.jsx';
 import Exo4 from './Exo4.jsx';
 import Oeuf from './Oeuf.jsx';
-import Calculatrice from './Calculatrice.jsx';
-import ToDoList from './ToDoList.jsx';
+import Calculatrice1 from './Calculatrice1.jsx';
+import Calculatrice2 from './Calculatrice2.jsx';
+import ToDoList from './ToDoList.jsx';   
 
 const Nav = () => {
+
 
     return(
         <Fragment>
@@ -20,7 +22,7 @@ const Nav = () => {
             <span className="text-primary mx-3" onClick={Exo3}>Exercice 3</span>
             <span className="text-primary mx-3" onClick={Exo4}>Exercice 4</span>
             <span className="text-primary mx-3" onClick={Oeuf}>Exercice 5</span>
-            <span className="text-primary mx-3" onClick={Calculatrice}>Exercice 6</span>
+            <span className="text-primary mx-3" onClick={Calculatrice1} onClick={Calculatrice2} >Exercice 6</span>
             <span className="text-primary mx-3" onClick={ToDoList}>Exercice 7</span>
             </div>
         </Fragment>

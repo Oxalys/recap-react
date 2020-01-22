@@ -19,7 +19,7 @@ const Exo3 = () => {
             interdiction de toucher à l'html</p>
             <input type="text" name="" id=""/><button className="rounded btn-success" onClick={click}>GO</button>
 
-        </div>
+        </div> 
     )
 };
 
