@@ -1,74 +1,68 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
 
-const ToDoList = () => {
+const List = () => {
+  const etats = ['ALL', 'DONE', 'DO']
+  const [list, setList] = useState([]);
+  const [etat, setEtat] = useState(etats[0])
 
-    const [list, setList] = useState([]);
 
-    const click = (e) => {
-        let tache = e.target.previousElementSibling.value;
-        e.target.previousElementSibling.value = "";
-        let tab = list.slice();
-        tab.push(tache);
-        setList(tab);
+  //retourne une list filtrée sur base du filtre
+  const filteredList = () => {
+    if (etat === etats[0]) {
+      return list
+    } else if (etat === etats[1]) {
+      return list.etat(t => t.check)
+    } else if (etat === etats[2]) {
+      return list.etat(t => !t.check)
     };
+  };
 
-    const handleNewTodo = (e) => {
-        if (e.key === 'Enter' && e.target.value) {
-            setList([...list, {
-                id: genId(),
-                label: e.target.value,
-                check: false,
-            }]) 
-            e.target.value = ''
-        };
+
+  // Add tâche list
+  const handleNewTodo = (e) => {
+    if (e.key === 'Enter' && e.target.value) {
+      setList([...list, {
+        id: genId(),
+        label: e.target.value,
+        check: false,
+      }])
+      e.target.value = ''
     };
-
-    const etats = ["tout", "à faire", "fait"];
-
-    const [etat, setEtat] = useState(etats[0]);
-
-    const filteredList = () => {
-        if (etat === etats[0]) {
-            return list
-        } else if (etat === etats[1]) {
-            return list.filter(t => t.check)
-        } else if (etat === etats[2]) {
-            return list.filter(t => !t.check) 
-        };
-    };
-
-    // générateur d'id random
-    const genId = () => '_' + Math.random().toString(36).substr(2, 9) + '_' + Math.random().toString(36).substr(2, 9)
-    // checked
-    const handleDone = (todo) => { setList(list.map(t => t.id === todo.id ? { ...t, check: !t.check } : t)) }
-    // close
-    const handleRemove = (todo) => { setList(list.filter(t => t.id !== todo.id)) }
+  };
 
 
-    return (
-        <div className="container bg-light my-3 p-3 pl-4">
-            <h1>Todo List</h1>
-            <hr />
-            <input className="input7 w-50 border-0 rounded" type="text" placeholder="  Que dois-je faire ?" /><button className="rounded mx-4 btn-success" onClick={click} onKeyPress={handleNewTodo}>OK</button>
-            <hr />
-            <div id='all' className="btn7 text-center">
-                <button onClick={() => setEtat(etats[0])} className={etat === etat[0] ? 'btn btn-outline-primary active' : 'btn btn-outline-primary'} className="btn-to rounded">Toutes</button>
-                <button onClick={() => setEtat(etats[1])} className={etat === etat[1] ? 'btn btn-outline-primary active' : 'btn btn-outline-primary'} className="btn-to rounded">Completées</button>
-                <button onClick={() => setEtat(etats[2])} className={etat === etat[2] ? 'btn btn-outline-primary active' : 'btn btn-outline-primary'} className="btn-to rounded">A faire</button>
-            </div>
-            <hr />
-            <div>
-                {filteredList().map((todo, i) =>
-                    <div key={todo.id} className={todo.check ? "bg-green" : ""}>
-                        <input onChange={() => handleDone(todo)} type="checkbox" name="" value={todo.check} id="" /> {todo.label}
-                        <button type="button" className="ml-2 close" data-dismiss="toast" aria-label="Close" ><span aria-hidden="true" onClick={() => handleRemove(todo)}>&times;</span>
-                        </button>
-                    </div>)}
-            </div>
+  // générateur d'id random
+  const genId = () => '_' + Math.random().toString(36).substr(2, 9) + '_' + Math.random().toString(36).substr(2, 9)
+  // checked
+  const handleDone = (list) => { setList(list.map(t => t.id === list.id ? { ...t, check: !t.check } : t)) }
+  // close
+  const handleRemove = (list) => { setList(list.etat(t => t.id !== list.id)) }
+
+  
+  return (
+    <Fragment>
+      <section className="bg-light container mt-5 pt-4 pb-4 mb-5">
+        <h2>To do list</h2>
+        <hr />
+        <input className="w-75 mb-4" type="text" placeholder="Que dois-je faire ?" onKeyPress={handleNewTodo} />
+        <div id="all">
+          <button onClick={() => setEtat(etats[0])} className={etat === etats[0] ? 'btn btn-outline-primary active' : 'btn btn-outline-primary'}>Toutes</button>
+          <button onClick={() => setEtat(etats[1])} className={etat === etats[1] ? 'btn btn-outline-primary active' : 'btn btn-outline-primary'}>Completées</button>
+          <button onClick={() => setEtat(etats[2])} className={etat === etats[2] ? 'btn btn-outline-primary active' : 'btn btn-outline-primary'}>À faire</button>
         </div>
-
-    )
+        <hr />
+        <div>
+          {filteredList().map((list) =>
+            <div key={list.id} className={list.check ? "bg-success" : ""}>
+              <input onChange={() => handleDone(list)} type="checkbox" name="" value={list.check} id="" /> <span>{list.label}</span>
+              <button type="button" className="ml-2 close" data-dismiss="toast" aria-label="Close"><span aria-hidden="true" onClick={() => handleRemove(list)}>&times;</span>
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+    </Fragment>
+  );
 };
-
-export default ToDoList;
+export default List;

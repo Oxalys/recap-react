@@ -12,7 +12,7 @@ const Calculatrice2 = () => {
     const [count, setCount] = useState(0);
     const egal = () => {
         setP(p + save);
-        switch (op) {
+        switch (op) { 
             case '+':;
                 setP(save + ' = ' + (Number(nb) + Number(nb2)));
                 break;
@@ -26,7 +26,7 @@ const Calculatrice2 = () => {
                 setP(save + ' = ' + (Number(nb) / Number(nb2)));
                 break;
             default:
-                setP('SyntaxError');
+                setP(' '); 
         }
         setInput('') 
         setOp('');
@@ -61,7 +61,7 @@ const Calculatrice2 = () => {
             <div className="calculatrice bg-dark text-white p-2 w-25 rounded ">
                 <div className="resultat d-flex justify-content-end mr-3 pt-2">
                     <p className='justify-content-start'>{p}</p>
-                    <input type="text" className='text-dark' value={input} onChange={() => setInput(input)} />
+                    <input type="text" className='text-dark rounded' value={input} onChange={() => setInput(input)} />
                 </div>
                 <div className="boutons">
                     <button className="btn btn-light col-2 ml-3 mt-3 mx-2" onClick={ajoute}>1</button>

@@ -25,7 +25,7 @@ const App = () => {
   return (
     <div>
       <Nav />
-      <Exo1 btn="Clique!" />
+      <Exo1 btn={exo} />
       <Exo2 />
       <Exo3 />
       <Exo4 />
