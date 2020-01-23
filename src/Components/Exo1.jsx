@@ -20,7 +20,7 @@ const Exo1 = (props) => {
             <p>Changer le contenu du h2 par "le titre modifié"</p>
             <p>Changer la couleur du h2 (couleur au choix)</p>
             <p>Ajouter une class background bootstrap au h2</p>
-            <button onClick={() => {setTitre(<h1 className="text-light bg-success">Titre modifié</h1>)}} className="btn-success">{props.btn}</button>
+            <button onClick={() => {setTitre(<h1 className="text-light bg-success">Titre modifié</h1>)}} className="btn-success">Clique!</button>
         </div>
     )
 };

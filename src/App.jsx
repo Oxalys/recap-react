@@ -11,21 +11,11 @@ import ToDoList from './Components/ToDoList';
 
 const App = () => {
 
-  const [exo, setExo] = useState([
-    {div: <Exo1 />, etat:'block', lien: 'col-3'},
-    {div: <Exo2 />, etat:'hide', lien: 'col-3'},
-    {div: <Exo3 />, etat:'hide', lien: 'col-3'},
-    {div: <Exo4 />, etat:'hide', lien: 'col-3'},
-    {div: <Oeuf />, etat:'hide', lien: 'col-3'},
-    {div: <Calculatrice1 />, etat:'hide', lien: 'col-3'},
-    {div: <Calculatrice2 />, etat:'hide', lien: 'col-3'},
-    {div: <ToDoList />, etat:'hide', lien: 'col-3'},
-  ])
 
   return (
     <div>
       <Nav />
-      <Exo1 btn={exo} />
+      <Exo1 />
       <Exo2 />
       <Exo3 />
       <Exo4 />
